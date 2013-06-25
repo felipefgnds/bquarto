@@ -15,8 +15,9 @@ Quarto - Peca
 
 class Peca:
     """Representa uma peca do jogo"""
-    def __init__(self, gui):
+    def __init__(self, peca_visual):
         """Constroi uma peca"""
+        self.peca = peca_visual
         
     def selecionou(self, pecas, campo):
         campo.peca = pecas[0]

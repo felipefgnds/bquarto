@@ -19,9 +19,9 @@ class Mao:
     """Lugar onde as pecas iniciam no jogo."""
     def __init__(self, gui):
         """Constroi as partes do Jogo. """
-        #self.pecas = range(8)
-        
+        lugar = gui.build_mao()
+        self.pecas = [Casa(casa_visual) for casa_visual in lugar]
         self.pecas = [Peca(None) for i in range(8)]
-        
+        self.pecas = gui.build_pecas(lugar)
     #: TODO - put all the rest
 

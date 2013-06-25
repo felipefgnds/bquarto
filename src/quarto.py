@@ -24,13 +24,17 @@ class Quarto:
         pass
         #self.build_base(gui)
         #self.build_campo(gui)
-        #self.build_tabuleiro(gui)
-        #self.build_mao(gui)
+        self.build_tabuleiro(gui)
+        self.build_mao(gui)
+        self.build_pecas(gui)
+        
         
     def build_base(self,gui):
         """docs here"""
         pass#gui.rect(x=10, y= 10, width=800, heigth=600)
-        
+    def build_pecas(self,gui):
+        """docs here"""
+        pass
     def build_tabuleiro(self,gui):
         """docs here"""
         self.tabuleiro = Tabuleiro(gui)

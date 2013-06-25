@@ -15,8 +15,13 @@ Quarto - Casa
 
 class Casa:
     """Lugar onde se encaixa uma peca"""
-    def __init__(self, gui):
+    def __init__(self, casa_visual):
+        
+        
+        self.casa=casa_visual
+        
         """Constroi uma casa"""
+        
         
     #: TODO - put all the rest
 

@@ -16,8 +16,10 @@ Quarto - Tabuleiro
 class Tabuleiro:
     """Lugar com casas onde se jogam as pecas."""
     def __init__(self, gui):
+        tabuleiro_visual=gui.build_tabuleiro()
         """Constroi as partes do Jogo. """
-        self.casas = range(16)
+        self.casas = [Casa(casa_v)
+            for casa_v in gui.build_tabuleiro()]
         
     #: TODO - put all the rest
 

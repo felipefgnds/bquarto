@@ -13,6 +13,7 @@ Visual
 :Copyright: 2013, `GPL <http://is.gd/3Udt>`__.
 """
 RAIO = 45
+RAIOP=1.618 * 45 / 2
 ESPACO = 10
 PASSO = 2 * RAIO + ESPACO
 LP = ESPACO + 2 * PASSO
@@ -34,8 +35,8 @@ class Visual:
         doc["main"] <= self.canvas
         self.build_base()
         self.build_campo(gui)
-        self.build_tabuleiro(gui)
-        self.build_mao(gui)
+        #self.build_tabuleiro(gui)
+        #self.build_mao(gui)
         
     def build_base(self,gui):
         """docs here"""
@@ -43,13 +44,14 @@ class Visual:
         self.canvas <= base
         
     def build_tabuleiro(self,gui):
-        self.build_parte(ESPACO,LP+2*ESPACO,4,4)
+        return self.build_parte(ESPACO,LP+2*ESPACO,4,4)
     def build_mao(self,gui):
         """docs here"""
        # self.mao1 = Mao(gui)
         #gui.rect(x=10, y= 10, width=800, heigth=600)
-        self.build_parte(ESPACO,ESPACO,4,2)
-        self.build_parte(LG + 2 * ESPACO,LP+2*ESPACO,2,4)
+        mao1 = self.build_parte(ESPACO,ESPACO,4,2)
+        mao2 = self.build_parte(LG + 2 * ESPACO,LP+2*ESPACO,2,4)
+        return (mao1 + mao2)
         
     def build_campo(self,gui):
         """docs here"""
@@ -59,12 +61,28 @@ class Visual:
     def build_casa(self,lugar,x,y):
         """docs here"""
         #self.casa = Casa(gui)
-        casa=self.gui.ellipse(cx=x , cy=y, ry=RAIO,rx = RAIO,fill="burlywood")
-        lugar <= casa
+        elipse=self.gui.ellipse(cx=0 , cy=0, ry=RAIO,rx = RAIO,fill="burlywood")
+        casa=self.gui.g(transform = "translate(%d %d)"%(x,y))
+        casa <= elipse
+        lugar<= casa
+        return casa
+    def build_pecas(self,lugar):
+      print('build pecas')
+      return[self.build_peca(umlugar,tipo)
+             for tipo,umlugar in enumerate(lugar)]
+    def build_peca(self,lugar,tipo):
+        #self.casa = Casa(gui)
+        cores =("sandybrown" , "saddlebrown")
+        elipse=self.gui.ellipse(cx=0 , cy=0, ry=RAIOP,rx = RAIOP,fill=(cores[tipo %2]))
+        peca=self.gui.g()
+        peca <= elipse
+        lugar<= peca
+        return peca
     def build_parte(self,x,y,nch,ncv):
         rect=self.gui.rect(x=x,y=y, width=nch*PASSO+ESPACO, height=ncv*PASSO+ESPACO,rx = RAIO,fill="peru")
         self.canvas <= rect
         casas = [self.build_casa(self.canvas,
                                  ESPACO + RAIO + x +(c%nch)*PASSO,
                                  ESPACO+RAIO+y+(c//nch)*PASSO) for c in range(nch * ncv)]
+        return casas 
 
