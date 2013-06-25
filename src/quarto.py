@@ -14,26 +14,36 @@ Quarto - Principal - Base
 """
 from tabuleiro import Tabuleiro
 from mao import Mao
-def main(doc):
-  print('Quarto 0.1.0')
+from casa import Casa
+from visual import Visual 
 
 class Quarto:
     """Base do jogo com tabuleiro e duas maos."""
     def __init__(self, gui):
         """Constroi as partes do Jogo. """
-        self.build_base(gui)
+        pass
+        #self.build_base(gui)
+        #self.build_campo(gui)
         #self.build_tabuleiro(gui)
         #self.build_mao(gui)
         
     def build_base(self,gui):
         """docs here"""
-        #gui.rect(x=10, y= 10, width=800, heigth=600)
+        pass#gui.rect(x=10, y= 10, width=800, heigth=600)
+        
     def build_tabuleiro(self,gui):
         """docs here"""
         self.tabuleiro = Tabuleiro(gui)
+        
     def build_mao(self,gui):
         """docs here"""
         self.mao1 = Mao(gui)
         #gui.rect(x=10, y= 10, width=800, heigth=600)
+        
+    def build_campo(self,gui):
+        """docs here"""
+        self.campo = Casa(gui)
     #: TODO - put all the rest
-
+def main(doc,gui):
+  print('Quarto 0.1.0')
+  Quarto(Visual(doc,gui))

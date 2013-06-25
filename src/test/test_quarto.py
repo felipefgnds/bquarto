@@ -31,16 +31,22 @@ class TestQuarto(unittest.TestCase):
         # garante que tem pecas na mao
         self.app.build_mao(None)
         m = self.app.mao1
-        self.assertEqual(len(m.pecas),8)
+        self.assertEqual(len(self.app.mao1.pecas),8)
     def test_selecionar_peca(self ):
         "tira peca da mao e bota no campo"
-        self.app.build_base()
+        self.app.build_base(None)
         self.assertTrue(self.app.campo != None)
-        peca = self.app.mao1[0]
-        peca.selecionou()
-        self.assertEqual(len(m.pecas), 7)
+        peca = self.app.mao1.pecas[0]
+        peca.selecionou(self.app.mao1.pecas, self.app.campo)
+        self.assertEqual(len(self.app.mao1.pecas), 7)
         self.assertEqual(self.app.campo.peca,peca)
         pass
+    def test_selecionar_casa(self, ):
+        t = self.app.tabuleiro
+        t.casas[0] = self.app.base.campo.peca;
+        campo = None
+        pass
+    
     
 
 

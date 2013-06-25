@@ -1,6 +1,6 @@
 """
 ############################################################
-Quarto - Mao
+Quarto - Peca
 ############################################################
 
 :Author: *Carlo E. T. Oliveira*
@@ -13,15 +13,14 @@ Quarto - Mao
 :Copyright: 2013, `GPL <http://is.gd/3Udt>`__.
 """
 
-from peca import Peca
-
-class Mao:
-    """Lugar onde as pecas iniciam no jogo."""
+class Peca:
+    """Representa uma peca do jogo"""
     def __init__(self, gui):
-        """Constroi as partes do Jogo. """
-        #self.pecas = range(8)
+        """Constroi uma peca"""
         
-        self.pecas = [Peca(None) for i in range(8)]
+    def selecionou(self, pecas, campo):
+        campo.peca = pecas[0]
+        pecas.remove(campo.peca)
         
     #: TODO - put all the rest
 
